@@ -1,26 +1,25 @@
 # AI-First CRM – HCP Interaction Module
 
-An AI-powered Customer Relationship Management (CRM) module for Healthcare Professionals (HCPs). This project allows medical representatives to log doctor interactions using a structured form and an AI-powered chat interface built with LangGraph and Groq.
+An AI-powered Customer Relationship Management (CRM) application designed for Healthcare Professionals (HCPs). This project enables medical representatives to log doctor interactions through a structured form and an AI-powered conversational interface built using LangGraph and Groq.
 
 ---
 
 ## 🚀 Features
 
-- Log HCP interactions using a structured form
-- AI Chat Assistant powered by LangGraph
-- FastAPI backend with REST APIs
-- React frontend with responsive UI
-- LangGraph ReAct Agent
-- Groq LLM Integration
-- CRUD APIs for HCP interactions
-- AI-powered interaction summarization
-- AI follow-up recommendations
+- 📝 Log HCP interactions using a structured form
+- 🤖 AI Chat Assistant powered by LangGraph
+- ✏️ Edit logged interactions
+- 📋 View all interactions
+- 📄 Summarize interaction notes
+- 📅 Generate AI-powered follow-up recommendations
+- ⚡ FastAPI REST APIs
+- 💻 Modern React frontend
 
 ---
 
 # 🛠 Tech Stack
 
-### Frontend
+## Frontend
 - React
 - Vite
 - Redux
@@ -28,33 +27,33 @@ An AI-powered Customer Relationship Management (CRM) module for Healthcare Profe
 - CSS
 - Google Inter Font
 
-### Backend
+## Backend
 - Python
 - FastAPI
 - LangGraph
 - LangChain
-- Groq API
+- Groq API (Llama 3.1 8B Instant)
 - SQLAlchemy
-- SQLite (can be replaced with MySQL/PostgreSQL)
+- SQLite
 
 ---
 
-# 📂 Project Structure
+# 📁 Project Structure
 
 ```
-aivoa-ai-crm
+aivoa-ai-crm/
 │
-├── frontend
-│   ├── src
-│   ├── public
+├── frontend/
+│   ├── src/
+│   ├── public/
 │   └── package.json
 │
-├── backend
-│   ├── app
-│   │   ├── routers
-│   │   ├── models
-│   │   ├── database
-│   │   ├── langgraph
+├── backend/
+│   ├── app/
+│   │   ├── routers/
+│   │   ├── models/
+│   │   ├── database/
+│   │   ├── langgraph/
 │   │   │   ├── agent.py
 │   │   │   └── tools.py
 │   │   └── main.py
@@ -69,15 +68,15 @@ aivoa-ai-crm
 
 # 🤖 LangGraph AI Agent
 
-This project uses a LangGraph ReAct Agent connected to the Groq LLM.
+This application uses a LangGraph ReAct Agent integrated with the Groq LLM.
 
-The AI agent understands user requests and automatically selects the appropriate tool to execute.
+The AI agent analyzes user requests and automatically selects the appropriate tool to perform CRM-related tasks.
 
 ---
 
 # 🔧 LangGraph Tools
 
-## 1. Log Interaction
+### 1. Log Interaction
 
 Logs a new Healthcare Professional interaction.
 
@@ -89,23 +88,23 @@ Log an interaction with Dr. Rajesh Kumar.
 
 ---
 
-## 2. Edit Interaction
+### 2. Edit Interaction
 
 Updates an existing interaction.
 
-Example
+Example:
 
 ```
-Change the follow-up date to next Monday.
+Update the follow-up date to next Monday.
 ```
 
 ---
 
-## 3. Get Interactions
+### 3. Get Interactions
 
-Displays all logged interactions.
+Displays all logged HCP interactions.
 
-Example
+Example:
 
 ```
 Show all interactions.
@@ -113,11 +112,11 @@ Show all interactions.
 
 ---
 
-## 4. Summarize Interactions
+### 4. Summarize Interactions
 
 Generates a concise summary of interaction notes.
 
-Example
+Example:
 
 ```
 Summarize today's interaction.
@@ -125,19 +124,19 @@ Summarize today's interaction.
 
 ---
 
-## 5. Recommend Follow-up
+### 5. Recommend Follow-up
 
 Suggests the next follow-up action.
 
-Example
+Example:
 
 ```
-Recommend the next follow-up.
+Recommend a follow-up for Dr. Rajesh Kumar.
 ```
 
 ---
 
-# ⚙ Installation
+# ⚙️ Installation
 
 ## Clone Repository
 
@@ -151,43 +150,45 @@ cd aivoa-ai-crm
 
 # Backend Setup
 
+Create and activate a virtual environment:
+
 ```bash
 cd backend
 
 python -m venv venv
 ```
 
-Windows
+Windows:
 
 ```bash
 venv\Scripts\activate
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file
+Create a `.env` file inside the backend folder:
 
 ```
 GROQ_API_KEY=your_groq_api_key
 ```
 
-Run backend
+Run the backend:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Backend runs on
+Backend URL:
 
 ```
 http://127.0.0.1:8000
 ```
 
-Swagger API
+Swagger Documentation:
 
 ```
 http://127.0.0.1:8000/docs
@@ -205,7 +206,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs on
+Frontend URL:
 
 ```
 http://localhost:5173
@@ -218,25 +219,35 @@ http://localhost:5173
 ## Interaction APIs
 
 | Method | Endpoint |
-|----------|---------------------------|
-| GET | /interactions |
-| POST | /interactions |
-| PUT | /interactions/{id} |
-| DELETE | /interactions/{id} |
+|---------|----------|
+| GET | `/interactions/` |
+| POST | `/interactions/` |
+| PUT | `/interactions/{interaction_id}` |
+| DELETE | `/interactions/{interaction_id}` |
 
 ---
 
-## AI Chat
+## AI Chat API
+
+### Endpoint
 
 ```
 POST /ai/chat
 ```
 
-Example
+Example Request
 
 ```json
 {
-    "message":"Summarize today's interaction"
+  "message": "Summarize today's interaction"
+}
+```
+
+Example Response
+
+```json
+{
+  "response": "Today's interaction focused on CardioPlus tablets. The doctor showed positive interest and agreed to prescribe the product for suitable patients."
 }
 ```
 
@@ -244,38 +255,27 @@ Example
 
 # Sample Workflow
 
-1. Open the React application.
-
+1. Launch the React application.
 2. Fill in the HCP interaction form.
-
 3. Save the interaction.
-
-4. Open AI Chat.
-
-5. Ask questions like:
-
-```
-Show all interactions
-
-Summarize today's interaction
-
-Recommend next follow-up
-
-Edit interaction
-
-Log a new interaction
-```
+4. Open the AI Chat section.
+5. Ask questions such as:
+   - Show all interactions
+   - Summarize today's interaction
+   - Recommend a follow-up
+   - Edit the interaction
+   - Log a new interaction
 
 ---
 
-# Future Improvements
+# Future Enhancements
 
-- PostgreSQL/MySQL Integration
-- Authentication & Authorization
-- Real-time Notifications
-- Dashboard Analytics
-- AI-powered Meeting Insights
-- Voice-to-Text Interaction Logging
+- MySQL/PostgreSQL support
+- User Authentication
+- Role-Based Access Control
+- AI-powered analytics dashboard
+- Voice-to-Text interaction logging
+- Email and calendar integration
 
 ---
 
@@ -283,16 +283,20 @@ Log a new interaction
 
 **Shamna**
 
-GitHub:
+GitHub: https://github.com/codedbyshamna
 
-https://github.com/codedbyshamna
-
-Repository:
-
-https://github.com/codedbyshamna/aivoa-ai-crm
+Project Repository: https://github.com/codedbyshamna/aivoa-ai-crm
 
 ---
 
-# Assignment
+# Assignment Information
 
-This project was developed as part of the **AIVOA AI CRM HCP Interaction Module Technical Assignment**, demonstrating an AI-first CRM system using React, FastAPI, LangGraph, and Groq LLM.
+This project was developed as part of the **AIVOA AI-First CRM HCP Interaction Module Technical Assignment**.
+
+The solution demonstrates:
+- React frontend
+- FastAPI backend
+- LangGraph AI Agent
+- Groq LLM integration
+- AI-assisted CRM workflow
+- Five LangGraph tools for HCP interaction management
